@@ -5,57 +5,22 @@ import { Actions } from 'react-native-router-flux';
 export const DATA = [
     {
         id: 1,
-        title: "Learn about hydroplaning",
-        description: "",
-        youtubeId: "1txOggiJIoA",
-    },
-    {
-        id: 2,
-        title: "Change your smoke detector batteries",
-        description: "",
-        youtubeId: "",
-    },
-    {
-        id: 3,
-        title: "Get a fire extinguisher",
+        title: "Learn about hydroplanifng",
         description: "Getting a fire extinguisher is necessary to ensure fire safet",
-        youtubeId: "",
+        youtubeId: "1txOggiJIoA",
+        isCameraNeeded: true,
     },
-    {
-        id: 4,
-        title: "Change your smoke detector batteries",
-        description: "",
-        youtubeId: "",
-    },
-    {
-        id: 5,
-        title: "Deez nutz",
-        description: "",
-        youtubeId: "",
-    },
-    {
-        id: 6,
-        title: "hfujdsopfidhufjkndlajio",
-        description: "",
-        youtubeId: "",
-    },
-    {
-      id: 7,
-      title: "hfujdsopfidhufjkndlajio",
-      description: "",
-      youtubeId: "",
-  }
 ]
 
 
 export default function Home(points) {
-  const Item = ({ title }) => (
+  const Item = ({ title, description, youtubeId, isCameraNeeded}) => (
     <View style={tw`bg-red-500 py-6 my-2 rounded-xl`}>
-      <Text onPress={() => Actions.challenge()} style={tw`text-white pl-2 font-semibold`}>{title}</Text>
+      <Text onPress={() => Actions.challenge({action: title, steps: description, ytid: youtubeId, isCameraUsed: isCameraNeeded})} style={tw`text-white pl-2 font-semibold`}>{title}</Text>
     </View>
   );
   const renderItem = ({ item }) => (
-    <Item title={item.title} />
+    <Item title={item.title} description={item.description} youtubeId={item.youtubeId} isCameraNeeded={item.isCameraNeeded}/>
   );
   return (
     <SafeAreaView>

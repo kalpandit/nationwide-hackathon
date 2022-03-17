@@ -1,4 +1,4 @@
-import { Modal, Text, ScrollView, View} from 'react-native';
+import { Modal, Text, ScrollView, View, Image} from 'react-native';
 import tw from 'twrnc';
 import React, { useState, useEffect, useCallback  } from 'react';
 import YoutubePlayer from "react-native-youtube-iframe";
@@ -23,7 +23,7 @@ function Button(props) {
     </View>
     );
 }
-const CameraScreen = ({action,steps,ytid,cameraUsed}) => {
+const CameraScreen = (props) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [cameraModalVisible, setCameraModalVisible] = useState(false);
     const onStateChange = useCallback((state) => {
@@ -32,10 +32,8 @@ const CameraScreen = ({action,steps,ytid,cameraUsed}) => {
           setModalVisible(!modalVisible);
         }
       }, []);
-    const isCameraUsed = true;
     const [playing, setPlaying] = useState(false);
     const [isPermitted, setHasPermission] = useState(null);
-
     const [type, setType] = useState(Camera.Constants.Type.back);
   /* Granting camera permissions and checking if we have them */
     useEffect(() => {
@@ -45,17 +43,17 @@ const CameraScreen = ({action,steps,ytid,cameraUsed}) => {
       })();
     }, []);
     if (isPermitted === null) {
-        return <View />;
+      isCameraUsed = false;
       }
     if (isPermitted === false) {
-        return <View />;
+      isCameraUsed = false;
     }
     return (
         /* Header*/
         <View style={tw`flex-1`}>
          <View style={tw`h-full bg-white content-end`}>
              <ScrollView style={tw`h-full bg-white`}>
-             <Text style={tw`text-black text-2xl px-2 py-2 font-bold`}>Learn about hydroplaning</Text>
+             <Text style={tw`text-black text-2xl px-2 py-2 font-bold`}>{props.action}</Text>
              <Text style={tw`text-black px-2 pb-3`}>To unlock this badge, watch the video or (if applicable) use the camera to document.</Text>
              <YoutubePlayer
         height={230}
@@ -63,9 +61,9 @@ const CameraScreen = ({action,steps,ytid,cameraUsed}) => {
         videoId={"1txOggiJIoA"}
         onChangeState={onStateChange}
       />
-     <Text style={tw`text-black text-lg px-2 pb-3`}>Lorem ipsum dolor sit amet, dolor sit placeholder placeholder placeholder. fsdofj iosfghdnkj hiofsod </Text>
+           <Text style={tw`text-black text-lg px-2 pb-3`}>{props.steps}</Text>
              </ScrollView>
-             <Button cameraModalVisible={cameraModalVisible} setCameraModalVisible={setCameraModalVisible} isCameraUsed={isCameraUsed}></Button>
+             <Button cameraModalVisible={cameraModalVisible} setCameraModalVisible={setCameraModalVisible} isCameraUsed={props.isCameraUsed}></Button>
          </View>
 
          <Modal
@@ -82,6 +80,7 @@ const CameraScreen = ({action,steps,ytid,cameraUsed}) => {
               <Text onPress={() => Actions.pop()} style={tw`text-green-900 text-lg font-bold rounded p-3 text-center bg-white my-6`}>Back to main menu</Text>
           </View>
       </Modal>
+
       <Modal
          animationType="slide"
          transparent={true}
@@ -101,11 +100,12 @@ const CameraScreen = ({action,steps,ytid,cameraUsed}) => {
             <Text onPress={() => {
                 async () => {
                     if (this.camera) {
-                      let photo = await this.camera.takePictureAsync();
+                      let photo = await this.camera.takePictureAsync({base64: true});
                     }
                   };
                 setCameraModalVisible(!cameraModalVisible);
-                setModalVisible(true)}} 
+                setModalVisible(true);
+              }} 
                 style={tw`bg-gray-800 justify-center text-center rounded-xl p-4 text-white mx-1`}>Take Photo</Text>
             </View>
           </Modal>
