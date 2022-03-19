@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import {Text, SafeAreaView, View, FlatList } from 'react-native';
 import tw from 'twrnc';
 import { Actions } from 'react-native-router-flux';
@@ -11,8 +10,6 @@ export const DATA = [
         isCameraNeeded: true,
     },
 ]
-
-
 export default function Home(points) {
   const Item = ({ title, description, youtubeId, isCameraNeeded}) => (
     <View style={tw`bg-red-500 py-6 my-2 rounded-xl`}>
@@ -24,7 +21,7 @@ export default function Home(points) {
   );
   return (
     <SafeAreaView>
-      <View style={tw`p-4 mt-0 bg-white`}>
+      <View style={tw`p-4 mt-0 bg-white`}>   
       <Text style={tw`text-xl font-bold text-gray-800 py-2`}>Your missions</Text>
       <FlatList
         style={tw`h-full`}
@@ -32,7 +29,6 @@ export default function Home(points) {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <StatusBar style="auto" />
       </View>
     </SafeAreaView>
   );
