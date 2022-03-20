@@ -6,7 +6,7 @@ import Navigation from './Navigation';
 import CameraScreen from './CameraScreen';
 import LeaderBoard from './LeaderBoard';
 
-
+console.disableYellowBox = true;
 const App = () => {
   return (
     <Router>
