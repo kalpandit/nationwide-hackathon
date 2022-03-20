@@ -9,4 +9,5 @@ How to start:
 2. Clone this repository and start an Expo instance: expo start
 3. Scan the QR code from the terminal (iOS) or use the Expo Go app on Android to run on your device
 
-https://www.youtube.com/watch?v=_MmYsybotmQ
+https://user-images.githubusercontent.com/82292386/159144917-fc071c0d-e228-43a9-abbd-2cef496ee9ff.mov
+
