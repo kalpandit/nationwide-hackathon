@@ -4,8 +4,8 @@ import { Actions } from 'react-native-router-flux';
 export const DATA = [
     {
         id: 1,
-        title: "Learn about hydroplanifng",
-        description: "Getting a fire extinguisher is necessary to ensure fire safet",
+        title: "Learn about hydroplaning",
+        description: "The weather's getting rainy recently, so make sure you know what to do and what not to do to prevent and deal with hydroplaning.",
         youtubeId: "1txOggiJIoA",
         isCameraNeeded: true,
     },

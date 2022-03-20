@@ -54,7 +54,7 @@ const CameraScreen = (props) => {
          <View style={tw`h-full bg-white content-end`}>
              <ScrollView style={tw`h-full bg-white`}>
              <Text style={tw`text-black text-2xl px-2 py-2 font-bold`}>{props.action}</Text>
-             <Text style={tw`text-black px-2 pb-3`}>To unlock this badge, watch the video or (if applicable) use the camera to document.</Text>
+             <Text style={tw`text-black px-2 pb-3`}>To unlock this badge, watch the video or (if applicable) use the camera to document. Watch the whole video or hit the "Camera" button (if available).</Text>
              <YoutubePlayer
         height={230}
         play={playing}

@@ -30,11 +30,6 @@ export const DATA = [
         title: "Manny",
         description: "You're getting there! Watch the video on the Nationwide Car Concierge to improve your ranking to #4.",
     },
-    {
-        id: 6,
-        title: "Cynthia",
-        description: "Welcome to the team! Start off by watching any of the video modules.",
-    },
 ]
 
 
@@ -55,7 +50,7 @@ export default function LeaderBoard(points) {
       <View style={tw`p-4 mt-0 bg-white`}>
       <Text style={tw`text-xl font-bold text-gray-800 py-2`}>Safety Leaderboard</Text>
       <FlatList
-        style={tw`h-full`}
+        style={tw`h-full pb-3`}
         data={DATA}
         renderItem={renderItem}
         keyExtractor={item => item.id}

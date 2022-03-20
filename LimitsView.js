@@ -7,10 +7,11 @@ import * as Location from "expo-location";
 import tw from 'twrnc';
 
 export default function LimitsView() {
+  // 25 speed limit is a placeholder for test purposes only
     const [speedLimit, setSpeedLimit] = useState(25);
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
-    const [latitude, setLatitude] = useState(40.528325);
+    const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
     const [data, setData] = useState({
         x: 0,
@@ -59,11 +60,12 @@ export default function LimitsView() {
           timeInterval: 50000
         },
         newLocation => {
+          // Commented out for testing purposes. Use an API to fetch speed limits for a region and if undefined, output ---
           let { coords } = newLocation;
           /*setLatitude(coords.latitude)
           setLongitude(coords.longitude);
           setLocation(coords);
-          fetch(`https://dev.virtualearth.net/REST/v1/Routes/SnapToRoad?points=${latitude},${longitude}&includeTruckSpeedLimit=false&IncludeSpeedLimit=true&speedUnit=MPH&travelMode=driving&key=Asc1E3sKWXqPug2S13sOONl-d5Hp8tCZMjzRasdbjtRyq5MnaBL6im9g-Nxovmeu`)
+          fetch(`https://dev.virtualearth.net/REST/v1/Routes/SnapToRoad?points=${latitude},${longitude}&includeTruckSpeedLimit=false&IncludeSpeedLimit=true&speedUnit=MPH&travelMode=driving&key=XXXXXXXXXXX`)
           .then(res => 
             {
                 if (!res.ok) {
@@ -72,13 +74,6 @@ export default function LimitsView() {
                 }
                 else {
                     res.json().then(json => {
-                        try {
-                            if (json.resourceSets[0].resources) {
-                                let a = 1 }
-                        }
-                        catch(error) {
-                            console.log("Err");
-                        }
                         if (json.resourceSets[0].resources !== undefined) {
                         setSpeedLimit(json.resourceSets[0].resources[0].snappedPoints[0].speedLimit);
                         }
@@ -100,7 +95,7 @@ export default function LimitsView() {
             latitudeDelta: 0.1,
             longitudeDelta: 0.1,
           }}
-          //showsCompass={true}
+          showsCompass={true}
           followsUserLocation={false}
           showsUserLocation={true}
           rotateEnabled={false}
@@ -117,6 +112,7 @@ export default function LimitsView() {
           <Text style={tw`text-6xl text-white text-center m-auto font-bold`}>{round(x)}</Text>
           </View>
         </View>
+        <Text style={tw`text-2xl text-black px-3 text-center m-auto font-semibold`}>Be safe when driving -- don't type and drive</Text>
       </View>
     );
 };
