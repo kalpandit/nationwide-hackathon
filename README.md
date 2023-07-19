@@ -1,4 +1,4 @@
-# nationwide-hackathon
+# Nationwide-Hackathon
 
 Code for Rutgers CSDN's submission to the Nationwide Hackathon
 
